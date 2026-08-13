@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Les Canailles — Cantine béglaise | Restaurant à Bègles</title>
+<meta name="description" content="Bistrot français et saveurs du Maghreb à Bègles. Tajines, couscous, entrecôte, menu du jour à 15 €. Salle, patio et terrasse avec vue. 246 bd Jean-Jacques Bosc.">
+<meta name="theme-color" content="#F4ECE1">
+<meta property="og:title" content="Les Canailles — Cantine béglaise">
+<meta property="og:description" content="Bistrot français et saveurs du Maghreb à Bègles. Menu du jour 15 €, tajines, couscous et belle carte de vins.">
+<meta property="og:type" content="restaurant">
+<meta property="og:locale" content="fr_FR">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Karla:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Charte relevée sur leur logo et leurs menus Instagram */
+  --creme:#F4ECE1;
+  --beige:#F4DDBE;
+  --rouge:#B82D4E;
+  --rouge-fonce:#9A2340;
+  --brique:#A61B1E;
+  --bleu:#233A96;
+  --bleu-clair:#3E56B8;
+  --encre:#1A1512;
+  --encre-douce:#5A5048;
+  --trait:#DCCEBC;
+  --blanc:#FFFDF9;
+
+  --maxw:1120px;
+  --pad:32px;
+  --marker:'Permanent Marker', 'Comic Sans MS', cursive;
+  --texte:'Karla', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --plume:'Caveat', cursive;
+}
+@media(max-width:600px){ :root{ --pad:20px; } }
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:var(--texte); background:var(--creme); color:var(--encre);
+  line-height:1.65; -webkit-font-smoothing:antialiased; overflow-x:hidden;
+}
+img{max-width:100%;display:block;}
+a{color:var(--bleu);text-decoration:none;}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad);}
+
+/* ── typo ─────────────────────────────────────────── */
+h1,h2,h3{font-family:var(--marker);font-weight:400;line-height:1.05;letter-spacing:.01em;}
+h2{font-size:clamp(2.1rem,5.5vw,3.2rem);color:var(--rouge);}
+h3{font-size:1.35rem;color:var(--encre);}
+p{max-width:62ch;}
+.plume{font-family:var(--plume);font-size:1.32rem;line-height:1.35;color:var(--bleu);}
+.oeil{font-family:var(--texte);font-size:.75rem;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--bleu);}
+
+/* ── boutons ──────────────────────────────────────── */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+  font-family:var(--texte);font-weight:700;font-size:1rem;padding:.85rem 1.5rem;
+  border-radius:999px;border:2px solid transparent;cursor:pointer;white-space:nowrap;
+  transition:transform .15s ease, background-color .18s ease, color .18s ease, border-color .18s ease;}
+.btn:hover{transform:translateY(-2px);}
+.btn-rouge{background:var(--rouge);color:var(--creme);}
+.btn-rouge:hover{background:var(--rouge-fonce);}
+.btn-bleu{background:transparent;color:var(--bleu);border-color:var(--bleu);}
+.btn-bleu:hover{background:var(--bleu);color:var(--creme);}
+.btn-creme{background:var(--creme);color:var(--rouge);}
+.btn-creme:hover{background:var(--blanc);}
+
+/* ── logo ─────────────────────────────────────────── */
+.badge{width:52px;height:52px;flex:none;}
+.badge--xl{width:132px;height:132px;}
+
+/* ── en-tête ──────────────────────────────────────── */
+header{position:sticky;top:0;z-index:70;background:color-mix(in srgb,var(--creme) 92%,transparent);
+  backdrop-filter:blur(10px);border-bottom:2px solid var(--trait);}
+.barre{display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:12px var(--pad);position:relative;}
+.marque{display:flex;align-items:center;gap:11px;}
+.marque .nom{font-family:var(--marker);font-size:1.28rem;color:var(--rouge);line-height:1;}
+.marque .sous{font-family:var(--texte);font-size:.62rem;font-weight:700;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--bleu);display:block;margin-top:3px;}
+.menu-nav{display:flex;align-items:center;gap:26px;}
+.menu-nav a{font-weight:600;font-size:.97rem;color:var(--encre);transition:color .15s;}
+.menu-nav a:hover{color:var(--rouge);}
+.menu-nav .cta{background:var(--rouge);color:var(--creme);padding:.6rem 1.15rem;border-radius:999px;}
+.menu-nav .cta:hover{background:var(--rouge-fonce);color:var(--creme);}
+.burger{display:none;flex-direction:column;gap:5px;width:44px;height:44px;
+  align-items:center;justify-content:center;background:none;border:none;cursor:pointer;}
+.burger span{display:block;width:22px;height:2.5px;background:var(--rouge);border-radius:2px;}
+@media(max-width:860px){
+  .burger{display:flex;}
+  .menu-nav{display:none;position:absolute;top:calc(100% + 2px);left:0;right:0;
+    background:var(--creme);border-bottom:2px solid var(--trait);flex-direction:column;
+    align-items:stretch;gap:0;padding:8px var(--pad) 20px;
+    box-shadow:0 16px 30px -20px rgba(0,0,0,.35);}
+  .menu-nav.ouvert{display:flex;}
+  .menu-nav a{padding:14px 0;border-bottom:1px solid var(--trait);font-size:1.05rem;}
+  .menu-nav .cta{border-bottom:none;margin-top:16px;text-align:center;padding:.9rem 1.15rem;}
+}
+
+/* ── héros ────────────────────────────────────────── */
+.heros{position:relative;padding:clamp(2.5rem,7vw,4.5rem) 0 clamp(2.5rem,6vw,4rem);
+  text-align:center;overflow:hidden;}
+.heros h1{font-size:clamp(3.2rem,12vw,7rem);color:var(--rouge);margin:1.2rem 0 .3rem;}
+.heros .cantine{font-family:var(--texte);font-weight:700;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--bleu);font-size:clamp(.72rem,2.2vw,1rem);}
+.heros .accroche{font-size:1.2rem;color:var(--encre-douce);margin:1.4rem auto 0;max-width:34ch;}
+.heros .actions{display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap;margin-top:2rem;}
+.heros .repere{display:flex;gap:.6rem 1.6rem;justify-content:center;flex-wrap:wrap;
+  margin-top:1.8rem;font-size:.92rem;color:var(--encre-douce);font-weight:600;}
+.heros .repere b{color:var(--rouge);}
+.deco{position:absolute;opacity:.85;pointer-events:none;}
+.deco--1{top:8%;left:2%;width:96px;transform:rotate(-12deg);}
+.deco--2{top:14%;right:3%;width:104px;transform:rotate(10deg);}
+.deco--3{bottom:6%;left:6%;width:78px;transform:rotate(8deg);}
+@media(max-width:860px){ .deco--1,.deco--2,.deco--3{display:none;} }
+
+/* ── bandeau infos ────────────────────────────────── */
+.bandeau{background:var(--bleu);color:var(--creme);}
+.bandeau .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));
+  gap:20px 32px;padding-top:26px;padding-bottom:26px;}
+.bandeau .bloc{display:flex;gap:12px;align-items:flex-start;}
+.bandeau .titre{font-family:var(--texte);font-size:.7rem;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:#B9C4EE;margin-bottom:.3rem;}
+.bandeau .val{font-weight:600;font-size:1rem;line-height:1.5;}
+.bandeau a{color:var(--creme);text-decoration:underline;text-underline-offset:3px;}
+.bandeau .ic{flex:none;width:26px;height:26px;margin-top:2px;}
+
+/* ── rythme des sections ──────────────────────────── */
+section{padding:clamp(3.2rem,8vw,5.5rem) 0;scroll-margin-top:78px;}
+.entete{text-align:center;margin-bottom:2.8rem;}
+.entete .plume{margin-top:.5rem;}
+.entete p{margin:1rem auto 0;color:var(--encre-douce);}
+
+/* ── la maison ────────────────────────────────────── */
+.maison{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));
+  gap:clamp(2rem,5vw,3.5rem);align-items:center;}
+.maison p + p{margin-top:1rem;}
+.maison .encart{background:var(--beige);border-radius:20px;padding:1.8rem 1.9rem;}
+.maison .encart .plume{color:var(--rouge);}
+.duo{display:flex;flex-direction:column;gap:1.1rem;}
+.duo .ligne{display:flex;gap:14px;align-items:flex-start;}
+.duo .puce{flex:none;width:34px;height:34px;border-radius:50%;background:var(--rouge);
+  color:var(--creme);display:flex;align-items:center;justify-content:center;
+  font-family:var(--marker);font-size:1rem;}
+.duo .ligne b{display:block;font-size:1.02rem;}
+.duo .ligne span{color:var(--encre-douce);font-size:.95rem;line-height:1.5;}
+
+/* ── menu du jour ─────────────────────────────────── */
+.dujour{background:var(--beige);border-radius:24px;padding:clamp(1.8rem,4vw,2.6rem);
+  max-width:860px;margin:0 auto;text-align:center;}
+.dujour .prix{font-family:var(--marker);font-size:clamp(2.6rem,8vw,4rem);color:var(--rouge);
+  line-height:1;margin:.2rem 0 .1rem;}
+.dujour .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr));
+  gap:1.6rem;margin-top:1.8rem;text-align:left;}
+.dujour .cols h4{font-family:var(--texte);font-size:.72rem;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--bleu);margin-bottom:.6rem;}
+.dujour .cols li{list-style:none;padding:.28rem 0;font-weight:500;}
+.dujour .note{margin-top:1.5rem;}
+
+/* ── la carte ─────────────────────────────────────── */
+.carte{display:grid;grid-template-columns:1fr;gap:clamp(1.4rem,3vw,2rem);align-items:start;}
+@media(min-width:780px){ .carte{grid-template-columns:1fr 1fr;} }
+.bloc-carte{background:var(--blanc);border-radius:20px;padding:1.8rem 1.9rem;
+  border:2px solid var(--trait);}
+.bloc-carte h3{font-family:var(--marker);color:var(--rouge);font-size:1.7rem;margin-bottom:1.1rem;}
+.plat{display:flex;align-items:baseline;gap:.5rem;padding:.5rem 0;border-bottom:1px dotted var(--trait);}
+.plat:last-child{border-bottom:none;}
+.plat .nom{font-weight:600;}
+.plat .nom small{font-weight:400;color:var(--encre-douce);font-size:.86em;}
+.plat .pointilles{flex:1;border-bottom:1.5px dotted var(--trait);transform:translateY(-4px);min-width:14px;}
+.plat .tarif{font-weight:700;color:var(--bleu);white-space:nowrap;font-variant-numeric:tabular-nums;}
+.declin{padding:.55rem 0;border-bottom:1px dotted var(--trait);}
+.declin:last-child{border-bottom:none;}
+.declin .nom{font-weight:700;display:block;margin-bottom:.15rem;}
+.declin .choix{color:var(--encre-douce);font-size:.94rem;line-height:1.6;}
+.declin .choix b{color:var(--bleu);font-weight:700;}
+.bloc-carte--vedette{background:var(--rouge);border-color:var(--rouge);color:var(--creme);}
+.bloc-carte--vedette h3{color:var(--creme);}
+.bloc-carte--vedette .declin{border-color:rgba(244,236,225,.28);}
+.bloc-carte--vedette .choix{color:#F3D6DD;}
+.bloc-carte--vedette .choix b{color:var(--creme);}
+.bloc-carte--vedette .etiquette{display:inline-block;background:var(--beige);color:var(--rouge);
+  font-weight:700;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;
+  padding:.3rem .8rem;border-radius:999px;margin-bottom:.9rem;}
+
+/* ── les vins ─────────────────────────────────────── */
+.vins{background:var(--bleu);color:var(--creme);border-radius:28px;
+  padding:clamp(2rem,5vw,3.2rem);}
+.vins h2{color:var(--creme);}
+.vins .intro{color:#C3CCF0;margin:1rem auto 0;text-align:center;}
+.verres{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(180px,100%),1fr));
+  gap:16px;margin-top:2.4rem;}
+.verre{background:rgba(255,255,255,.09);border-radius:18px;padding:1.4rem 1.5rem;text-align:center;}
+.verre .type{font-family:var(--marker);font-size:1.5rem;color:var(--beige);}
+.verre .tarifs{margin-top:.6rem;font-size:.96rem;line-height:1.9;color:#DBE1F6;}
+.verre .tarifs b{color:var(--creme);}
+.vins .selection{margin-top:2.4rem;padding-top:1.8rem;border-top:1px solid rgba(255,255,255,.22);}
+.vins .selection h4{font-family:var(--texte);font-size:.72rem;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:#B9C4EE;margin-bottom:1rem;text-align:center;}
+.chateaux{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center;}
+.chateaux span{background:rgba(255,255,255,.11);border-radius:999px;padding:.42rem 1rem;font-size:.92rem;}
+
+/* ── le lieu ──────────────────────────────────────── */
+.lieux{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:20px;}
+.lieu{background:var(--blanc);border:2px solid var(--trait);border-radius:20px;
+  padding:1.9rem 1.8rem;text-align:center;transition:transform .18s ease, border-color .18s ease;}
+.lieu:hover{transform:translateY(-4px);border-color:var(--rouge);}
+.lieu .ill{width:74px;height:74px;margin:0 auto 1rem;}
+.lieu h3{font-size:1.45rem;color:var(--rouge);margin-bottom:.5rem;}
+.lieu p{color:var(--encre-douce);font-size:.97rem;margin:0 auto;}
+
+/* ── avis ─────────────────────────────────────────── */
+.avis{text-align:center;}
+.avis .note{font-family:var(--marker);font-size:clamp(3.4rem,10vw,5rem);color:var(--rouge);line-height:1;}
+.avis .etoiles{color:var(--rouge);font-size:1.5rem;letter-spacing:.28em;margin:.4rem 0 .2rem;}
+.avis .compte{color:var(--encre-douce);font-weight:600;}
+.avis blockquote{font-family:var(--plume);font-size:clamp(1.5rem,3.6vw,2.1rem);color:var(--bleu);
+  max-width:26ch;margin:1.8rem auto 0;line-height:1.35;}
+
+/* ── venir ────────────────────────────────────────── */
+.venir{background:var(--rouge);color:var(--creme);}
+.venir h2{color:var(--creme);}
+.venir .grille{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));
+  gap:clamp(2rem,5vw,3.5rem);align-items:start;}
+.horaires{width:100%;border-collapse:collapse;}
+.horaires td{padding:.6rem 0;border-bottom:1px dotted rgba(244,236,225,.35);font-size:1rem;}
+.horaires td:last-child{text-align:right;font-weight:700;font-variant-numeric:tabular-nums;}
+.horaires tr:last-child td{border-bottom:none;}
+.horaires .ferme{color:#F0BFC9;}
+.venir .adresse{font-size:1.12rem;font-weight:600;line-height:1.6;}
+.venir .actions{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.6rem;}
+.venir a.lien{color:var(--creme);text-decoration:underline;text-underline-offset:3px;}
+
+/* ── pied ─────────────────────────────────────────── */
+footer{background:var(--encre);color:var(--creme);padding:clamp(2.6rem,6vw,3.6rem) 0 2rem;}
+footer .haut{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));
+  gap:28px 40px;padding-bottom:1.8rem;border-bottom:1px solid rgba(244,236,225,.18);}
+footer .nom{font-family:var(--marker);font-size:1.4rem;color:var(--creme);}
+footer .sous{font-size:.66rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:#9C9088;margin-top:.3rem;}
+footer h4{font-family:var(--texte);font-size:.7rem;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:#9C9088;margin-bottom:.8rem;}
+footer .liste{display:flex;flex-direction:column;gap:.45rem;font-size:.97rem;color:#D8CFC6;}
+footer .liste a{color:#D8CFC6;}
+footer .liste a:hover{color:var(--beige);}
+footer .bas{padding-top:1.4rem;display:flex;justify-content:space-between;gap:14px;
+  flex-wrap:wrap;font-size:.82rem;color:#9C9088;}
+footer .bas a{color:#9C9088;text-decoration:underline;text-underline-offset:3px;}
+footer .bas a:hover{color:var(--beige);}
+
+/* ── apparitions ──────────────────────────────────── */
+.rv{opacity:0;transform:translateY(18px);
+  transition:opacity .7s cubic-bezier(.16,.8,.24,1), transform .7s cubic-bezier(.16,.8,.24,1);}
+.rv.vu{opacity:1;transform:none;}
+@media(prefers-reduced-motion:reduce){
+  .rv{opacity:1!important;transform:none!important;transition:none!important;}
+  html{scroll-behavior:auto;}
+  .btn:hover,.lieu:hover{transform:none;}
+}
+:focus-visible{outline:3px solid var(--bleu);outline-offset:3px;border-radius:4px;}
+</style>
+</head>
+<body>
+
+<!-- ═══ Symboles réutilisables : le badge et les illustrations ═══ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- Le badge rond de la maison, redessiné d'après leur logo -->
+    <symbol id="badge" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="50" fill="#A61B1E"/>
+      <circle cx="50" cy="50" r="42" fill="none" stroke="#EBE4DE" stroke-width="1.6"/>
+      <circle cx="50" cy="50" r="39.5" fill="none" stroke="#EBE4DE" stroke-width="1"/>
+      <path id="arc-cantine" d="M 14.5 52 A 35.5 35.5 0 0 1 85.5 52" fill="none"/>
+      <text font-family="Karla, sans-serif" font-size="8.6" font-weight="700"
+            letter-spacing="1.35" fill="#EBE4DE">
+        <textPath href="#arc-cantine" startOffset="50%" text-anchor="middle">CANTINE BEGLAISE</textPath>
+      </text>
+      <text x="47" y="76" font-family="Karla, sans-serif" font-size="52" font-weight="700"
+            fill="#EBE4DE" text-anchor="middle">c</text>
+      <rect x="63" y="64" width="8.5" height="8.5" rx="1.6" fill="#EBE4DE"/>
+    </symbol>
+
+    <!-- Illustrations au trait, dans leur bleu -->
+    <symbol id="ill-verres" viewBox="0 0 64 64">
+      <g fill="none" stroke="#233A96" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 12 h16 l-3 14a5 5 0 0 1-10 0z"/><path d="M20 26 v14"/><path d="M14 40 h12"/>
+        <path d="M36 12 h16 l-3 14a5 5 0 0 1-10 0z"/><path d="M44 26 v14"/><path d="M38 40 h12"/>
+      </g>
+      <path d="M13.4 18 h13.2l-1.6 7.4a4.4 4.4 0 0 1-10 0z" fill="#B82D4E"/>
+      <path d="M37.4 18 h13.2l-1.6 7.4a4.4 4.4 0 0 1-10 0z" fill="#B82D4E"/>
+    </symbol>
+
+    <symbol id="ill-tajine" viewBox="0 0 64 64">
+      <g fill="none" stroke="#233A96" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="32" cy="9" r="3"/><path d="M32 12 v3"/>
+        <path d="M15 40 C15 26 22 15 32 15 C42 15 49 26 49 40"/>
+        <path d="M9 40 h46 a5 5 0 0 1 -5 7 h-36 a5 5 0 0 1 -5 -7 z"/>
+        <path d="M22 32 h20" stroke="#B82D4E"/>
+      </g>
+    </symbol>
+
+    <symbol id="ill-bouteille" viewBox="0 0 64 64">
+      <g fill="none" stroke="#233A96" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M27 8 h10 v10 l6 9 v27 a3 3 0 0 1 -3 3 h-16 a3 3 0 0 1 -3 -3 v-27 l6 -9z"/>
+        <path d="M21 30 h22"/>
+      </g>
+      <rect x="21.5" y="32" width="21" height="12" fill="#B82D4E"/>
+    </symbol>
+
+    <symbol id="ill-terrasse" viewBox="0 0 64 64">
+      <g fill="none" stroke="#233A96" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 26 L32 10 L58 26"/><path d="M32 26 v26"/>
+        <path d="M14 52 h36"/><path d="M20 34 h24"/>
+      </g>
+      <circle cx="32" cy="20" r="4" fill="#B82D4E"/>
+    </symbol>
+
+    <symbol id="ill-salle" viewBox="0 0 64 64">
+      <g fill="none" stroke="#233A96" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M8 30 h48"/><path d="M14 30 v20"/><path d="M50 30 v20"/>
+        <path d="M20 20 v10"/><path d="M32 16 v14"/><path d="M44 20 v10"/>
+      </g>
+      <circle cx="32" cy="13" r="3.5" fill="#B82D4E"/>
+    </symbol>
+
+    <symbol id="ill-patio" viewBox="0 0 64 64">
+      <g fill="none" stroke="#233A96" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="32" cy="32" r="12"/>
+        <path d="M32 8 v6"/><path d="M32 50 v6"/><path d="M8 32 h6"/><path d="M50 32 h6"/>
+        <path d="M15 15 l4 4"/><path d="M45 45 l4 4"/><path d="M49 15 l-4 4"/><path d="M19 45 l-4 4"/>
+      </g>
+      <circle cx="32" cy="32" r="6" fill="#B82D4E"/>
+    </symbol>
+
+    <symbol id="ic-horloge" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>
+      </g>
+    </symbol>
+    <symbol id="ic-lieu" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/>
+      </g>
+    </symbol>
+    <symbol id="ic-tel" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+        d="M6 3h3l2 5-2.5 1.5a12 12 0 0 0 6 6L16 13l5 2v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4 5.2 2 2 0 0 1 6 3z"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header>
+  <div class="wrap barre">
+    <a class="marque" href="#haut" aria-label="Les Canailles — accueil">
+      <svg class="badge" aria-hidden="true"><use href="#badge"/></svg>
+      <span>
+        <span class="nom">Les Canailles</span>
+        <span class="sous">Cantine béglaise</span>
+      </span>
+    </a>
+    <nav class="menu-nav" id="menu-nav">
+      <a href="#carte">La carte</a>
+      <a href="#vins">Les vins</a>
+      <a href="#maison">La maison</a>
+      <a href="#venir">Nous trouver</a>
+      <a class="cta" href="tel:+33658030182">Réserver</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="menu-nav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="haut">
+
+  <!-- ═══ Héros ═══ -->
+  <div class="heros">
+    <svg class="deco deco--1" viewBox="0 0 64 64" aria-hidden="true"><use href="#ill-verres"/></svg>
+    <svg class="deco deco--2" viewBox="0 0 64 64" aria-hidden="true"><use href="#ill-tajine"/></svg>
+    <svg class="deco deco--3" viewBox="0 0 64 64" aria-hidden="true"><use href="#ill-bouteille"/></svg>
+    <div class="wrap">
+      <svg class="badge badge--xl rv" aria-hidden="true"><use href="#badge"/></svg>
+      <h1 class="rv">Les Canailles</h1>
+      <div class="cantine rv">Cantine béglaise</div>
+      <p class="accroche rv">Le bistrot français et les saveurs du Maghreb, à deux pas du pont Simone-Veil.</p>
+      <div class="actions rv">
+        <a class="btn btn-rouge" href="#carte">Voir la carte</a>
+        <a class="btn btn-bleu" href="tel:+33658030182">Réserver une table</a>
+      </div>
+      <div class="repere rv">
+        <span><b>4,8 ★</b> sur Google</span>
+        <span>246 bd Jean-Jacques Bosc, Bègles</span>
+        <span>Salle · Patio · Terrasse</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ Bandeau pratique ═══ -->
+  <div class="bandeau">
+    <div class="wrap">
+      <div class="bloc">
+        <svg class="ic" aria-hidden="true"><use href="#ic-horloge"/></svg>
+        <div>
+          <div class="titre">Le midi, en semaine</div>
+          <div class="val">Menu du jour à 15 €</div>
+        </div>
+      </div>
+      <div class="bloc">
+        <svg class="ic" aria-hidden="true"><use href="#ic-lieu"/></svg>
+        <div>
+          <div class="titre">Nous trouver</div>
+          <div class="val"><a href="https://maps.google.com/?q=246+bd+Jean-Jacques+Bosc+33130+Bègles" target="_blank" rel="noopener">246 bd Jean-Jacques Bosc, Bègles</a></div>
+        </div>
+      </div>
+      <div class="bloc">
+        <svg class="ic" aria-hidden="true"><use href="#ic-tel"/></svg>
+        <div>
+          <div class="titre">Réserver</div>
+          <div class="val"><a href="tel:+33658030182">06 58 03 01 82</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ La maison ═══ -->
+  <section id="maison">
+    <div class="wrap">
+      <div class="maison">
+        <div class="rv">
+          <span class="oeil">La maison</span>
+          <h2>Une cantine, une famille</h2>
+          <p style="margin-top:1.2rem;">Aux Canailles, la cuisine se fait à quatre mains : celles de <b>Khadija</b> et de son fils <b>Sabri</b>. D'un côté les classiques du bistrot français, de l'autre les tajines et les couscous qu'on prépare comme à la maison. Les deux se retrouvent dans la même assiette, sans chichi.</p>
+          <p>On y vient pour un café le matin, pour le plat du jour à midi, pour un verre et une planche le soir. Les grandes tablées sont faites pour être partagées, et les murs racontent le quartier — l'UBB n'est jamais bien loin.</p>
+        </div>
+        <div class="encart rv">
+          <p class="plume" style="margin-bottom:1.4rem;">« On cuisine ce qu'on aime manger, et on sert comme on reçoit chez nous. »</p>
+          <div class="duo">
+            <div class="ligne">
+              <span class="puce" aria-hidden="true">1</span>
+              <span><b>Fait maison, tous les jours</b><span>Le plat du jour change au gré du marché et des envies.</span></span>
+            </div>
+            <div class="ligne">
+              <span class="puce" aria-hidden="true">2</span>
+              <span><b>Des vins qu'on défend</b><span>Une carte très bordelaise, des bios, et le quart à 5 €.</span></span>
+            </div>
+            <div class="ligne">
+              <span class="puce" aria-hidden="true">3</span>
+              <span><b>Trois façons de s'installer</b><span>La salle, le patio couvert toute l'année, la terrasse et sa vue.</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Menu du jour ═══ -->
+  <section style="padding-top:0;">
+    <div class="wrap">
+      <div class="dujour rv">
+        <span class="oeil">Du lundi au vendredi, le midi</span>
+        <div class="prix">15 €</div>
+        <p class="plume" style="color:var(--rouge);">entrée + plat du jour + dessert</p>
+        <div class="cols">
+          <div>
+            <h4>En entrée</h4>
+            <ul>
+              <li>Œufs mayonnaise</li>
+              <li>Rillettes d'oie</li>
+              <li>Filet de hareng</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Le plat</h4>
+            <ul>
+              <li>Le plat du jour,<br>annoncé le matin même</li>
+            </ul>
+          </div>
+          <div>
+            <h4>En dessert</h4>
+            <ul>
+              <li>Flan pâtissier</li>
+              <li>Riz au lait</li>
+              <li>Panna cotta</li>
+            </ul>
+          </div>
+        </div>
+        <p class="plume note">Servi uniquement en semaine, le midi.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ La carte ═══ -->
+  <section id="carte">
+    <div class="wrap">
+      <div class="entete rv">
+        <span class="oeil">À la carte</span>
+        <h2>Ce qu'on vous sert</h2>
+        <p class="plume">Des classiques, des spécialités, et de quoi finir en beauté.</p>
+      </div>
+
+      <div class="carte">
+        <div class="bloc-carte rv">
+          <h3>Entrées</h3>
+          <div class="plat"><span class="nom">Œufs mayonnaise</span><span class="pointilles"></span><span class="tarif">4 €</span></div>
+          <div class="plat"><span class="nom">Rémoulade de saumon fumé</span><span class="pointilles"></span><span class="tarif">5 €</span></div>
+          <div class="plat"><span class="nom">Caviar d'aubergine</span><span class="pointilles"></span><span class="tarif">5 €</span></div>
+          <div class="plat"><span class="nom">Filet de hareng</span><span class="pointilles"></span><span class="tarif">4 €</span></div>
+          <div class="plat"><span class="nom">Graton bordelais</span><span class="pointilles"></span><span class="tarif">6 €</span></div>
+          <div class="plat"><span class="nom">Rillettes d'oie</span><span class="pointilles"></span><span class="tarif">4 €</span></div>
+          <div class="plat"><span class="nom">Samoussas végétariens <small>×4</small></span><span class="pointilles"></span><span class="tarif">6 €</span></div>
+        </div>
+
+        <div class="bloc-carte rv">
+          <h3>Plats</h3>
+          <div class="plat"><span class="nom">Plat du jour</span><span class="pointilles"></span><span class="tarif">11 €</span></div>
+          <div class="plat"><span class="nom">Salade du moment</span><span class="pointilles"></span><span class="tarif">14 €</span></div>
+          <div class="plat"><span class="nom">Brochettes de saumon</span><span class="pointilles"></span><span class="tarif">19 €</span></div>
+          <div class="plat"><span class="nom">Brochettes de crevettes</span><span class="pointilles"></span><span class="tarif">20 €</span></div>
+          <div class="plat"><span class="nom">Dorade <small>entière</small></span><span class="pointilles"></span><span class="tarif">21 €</span></div>
+          <div class="plat"><span class="nom">Côte de veau <small>350 g</small></span><span class="pointilles"></span><span class="tarif">21 €</span></div>
+          <div class="plat"><span class="nom">Magret de canard <small>+ de 400 g</small></span><span class="pointilles"></span><span class="tarif">24 €</span></div>
+          <div class="plat"><span class="nom">Entrecôte <small>430 g</small></span><span class="pointilles"></span><span class="tarif">26 €</span></div>
+        </div>
+
+        <div class="bloc-carte bloc-carte--vedette rv">
+          <span class="etiquette">Nos spécialités</span>
+          <h3>La maison</h3>
+          <div class="declin">
+            <span class="nom">Épaule de porcelet <small style="font-weight:400;">450 g</small></span>
+            <span class="choix">Cuite au court-bouillon puis rôtie au four — <b>20 €</b></span>
+          </div>
+          <div class="declin">
+            <span class="nom">Tajine</span>
+            <span class="choix">Végétarien <b>13 €</b> · Poulet <b>18 €</b> · Morue <b>19 €</b> · Agneau <b>22 €</b></span>
+          </div>
+          <div class="declin">
+            <span class="nom">Couscous</span>
+            <span class="choix">Végétarien <b>14 €</b> · Poulet <b>18 €</b> · Agneau <b>22 €</b> · Trois viandes <b>25 €</b></span>
+          </div>
+          <p class="plume" style="color:var(--beige);margin-top:1.2rem;">Les plats qu'on vient chercher de loin.</p>
+        </div>
+
+        <div class="bloc-carte rv">
+          <h3>Desserts</h3>
+          <div class="plat"><span class="nom">Flan pâtissier</span><span class="pointilles"></span><span class="tarif">4 €</span></div>
+          <div class="plat"><span class="nom">Riz au lait</span><span class="pointilles"></span><span class="tarif">4 €</span></div>
+          <div class="plat"><span class="nom">Tarte fine à la pomme</span><span class="pointilles"></span><span class="tarif">4 €</span></div>
+          <div class="plat"><span class="nom">Mousse au chocolat</span><span class="pointilles"></span><span class="tarif">5 €</span></div>
+          <div class="plat"><span class="nom">Panna cotta</span><span class="pointilles"></span><span class="tarif">5 €</span></div>
+          <div class="plat"><span class="nom">Assiette de fromages</span><span class="pointilles"></span><span class="tarif">6 €</span></div>
+          <div class="plat"><span class="nom">Sorbets <small>fraise, citron, poire, mangue</small></span><span class="pointilles"></span><span class="tarif">2,50 €</span></div>
+          <div class="plat"><span class="nom">Glaces <small>rhum-raisin, chocolat, vanille, caramel beurre salé</small></span><span class="pointilles"></span><span class="tarif">2,50 €</span></div>
+          <div class="plat"><span class="nom">Colonel · Williamine · Irish, French ou Jamaican coffee</span><span class="pointilles"></span><span class="tarif">9 €</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Les vins ═══ -->
+  <section id="vins">
+    <div class="wrap">
+      <div class="vins rv">
+        <div class="entete" style="margin-bottom:0;">
+          <svg style="width:72px;height:72px;margin:0 auto .6rem;" aria-hidden="true"><use href="#ill-verres"/></svg>
+          <h2>La cave</h2>
+          <p class="intro">Une carte très bordelaise, quelques bios, et des bouteilles à partager du 37,5 cl au magnum.</p>
+        </div>
+
+        <div class="verres">
+          <div class="verre">
+            <div class="type">Rouge</div>
+            <div class="tarifs">Le quart <b>5 €</b><br>Le demi <b>10 €</b></div>
+          </div>
+          <div class="verre">
+            <div class="type">Blanc</div>
+            <div class="tarifs">Le quart <b>6 €</b><br>Le demi <b>11 €</b></div>
+          </div>
+          <div class="verre">
+            <div class="type">Rosé</div>
+            <div class="tarifs">Le quart <b>7 €</b><br>Le demi <b>13 €</b></div>
+          </div>
+          <div class="verre">
+            <div class="type">Bulles</div>
+            <div class="tarifs">Champagne brut <b>55 €</b><br>Mumm <b>75 €</b></div>
+          </div>
+        </div>
+
+        <div class="selection">
+          <h4>Quelques maisons à la carte</h4>
+          <div class="chateaux">
+            <span>Château Laroche Joubert · Côtes de Bourg</span>
+            <span>Château Coucheroy · Pessac-Léognan</span>
+            <span>Château Jonca · Saint-Émilion</span>
+            <span>Château Archambeau · Graves</span>
+            <span>Domaine des Rocs · Pic Saint-Loup bio</span>
+            <span>Esprit de Chevalier · Pessac-Léognan</span>
+            <span>L'Oratoire des Papes · Châteauneuf-du-Pape</span>
+            <span>Château Haut Garriga · Entre-deux-Mers</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Le lieu ═══ -->
+  <section id="lieu">
+    <div class="wrap">
+      <div class="entete rv">
+        <span class="oeil">Le lieu</span>
+        <h2>Où vous voulez</h2>
+        <p class="plume">Trois ambiances, la même cuisine.</p>
+      </div>
+      <div class="lieux">
+        <div class="lieu rv">
+          <svg class="ill" aria-hidden="true"><use href="#ill-salle"/></svg>
+          <h3>La salle</h3>
+          <p>Grandes tablées et souvenirs de l'UBB aux murs. C'est là qu'on se serre pour être plus nombreux.</p>
+        </div>
+        <div class="lieu rv">
+          <svg class="ill" aria-hidden="true"><use href="#ill-patio"/></svg>
+          <h3>Le patio</h3>
+          <p>Couvert et ouvert toute l'année. Le compromis parfait quand le ciel béglais hésite.</p>
+        </div>
+        <div class="lieu rv">
+          <svg class="ill" aria-hidden="true"><use href="#ill-terrasse"/></svg>
+          <h3>La terrasse</h3>
+          <p>Aux beaux jours, avec la vue sur Bègles et Bordeaux. On y reste volontiers après le café.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Avis ═══ -->
+  <section>
+    <div class="wrap avis rv">
+      <div class="note">4,8</div>
+      <div class="etoiles" aria-hidden="true">★★★★★</div>
+      <div class="compte">sur plus de 115 avis Google</div>
+      <blockquote>« On y entre pour déjeuner, on y revient pour tout le reste. »</blockquote>
+    </div>
+  </section>
+
+  <!-- ═══ Nous trouver ═══ -->
+  <section id="venir" class="venir">
+    <div class="wrap">
+      <div class="grille">
+        <div class="rv">
+          <span class="oeil" style="color:var(--beige);">Nous trouver</span>
+          <h2>On vous attend</h2>
+          <p class="adresse" style="margin-top:1.4rem;">
+            246 boulevard Jean-Jacques Bosc<br>33130 Bègles
+          </p>
+          <p style="color:#F3D6DD;margin-top:.8rem;">À deux pas du pont Simone-Veil et de l'Arkéa Arena. Stationnement dans la rue, et les chiens sont les bienvenus.</p>
+          <div class="actions">
+            <a class="btn btn-creme" href="tel:+33658030182">06 58 03 01 82</a>
+            <a class="btn btn-creme" style="background:transparent;color:var(--creme);border-color:var(--creme);"
+               href="https://maps.google.com/?q=246+bd+Jean-Jacques+Bosc+33130+Bègles" target="_blank" rel="noopener">Ouvrir dans Maps</a>
+          </div>
+        </div>
+        <div class="rv">
+          <h3 style="font-family:var(--marker);color:var(--creme);font-size:1.6rem;margin-bottom:1rem;">Horaires</h3>
+          <table class="horaires">
+            <tr><td>Lundi</td><td>8h – 19h</td></tr>
+            <tr><td>Mardi</td><td>8h – 19h</td></tr>
+            <tr><td>Mercredi</td><td>8h – 19h</td></tr>
+            <tr><td>Jeudi</td><td>8h – 1h</td></tr>
+            <tr><td>Vendredi</td><td>8h – 19h</td></tr>
+            <tr><td>Samedi</td><td>10h – 1h30</td></tr>
+            <tr class="ferme"><td>Dimanche</td><td>Fermé</td></tr>
+          </table>
+          <p class="plume" style="color:var(--beige);margin-top:1.2rem;">Le service du midi se termine à 14h30.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="haut">
+      <div>
+        <div style="display:flex;align-items:center;gap:11px;">
+          <svg class="badge" style="width:44px;height:44px;" aria-hidden="true"><use href="#badge"/></svg>
+          <span>
+            <span class="nom">Les Canailles</span>
+            <span class="sous">Cantine béglaise</span>
+          </span>
+        </div>
+      </div>
+      <div>
+        <h4>Nous joindre</h4>
+        <div class="liste">
+          <a href="tel:+33658030182">06 58 03 01 82</a>
+          <span>246 bd Jean-Jacques Bosc</span>
+          <span>33130 Bègles</span>
+        </div>
+      </div>
+      <div>
+        <h4>La carte</h4>
+        <div class="liste">
+          <a href="#carte">Entrées et plats</a>
+          <a href="#carte">Tajines et couscous</a>
+          <a href="#vins">Les vins</a>
+        </div>
+      </div>
+      <div>
+        <h4>Suivre la maison</h4>
+        <div class="liste">
+          <a href="https://www.instagram.com/lescanaillesdebegles/" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://maps.google.com/?q=246+bd+Jean-Jacques+Bosc+33130+Bègles" target="_blank" rel="noopener">Google Maps</a>
+        </div>
+      </div>
+    </div>
+    <div class="bas">
+      <span>© <span id="annee">2026</span> Les Canailles — Cantine béglaise</span>
+      <span>Site réalisé par <a href="https://lemarchanddesites.fr" target="_blank" rel="noopener">Le Marchand de Sites</a></span>
+    </div>
+  </div>
+</footer>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Restaurant",
+  "name":"Les Canailles — Cantine béglaise",
+  "description":"Bistrot français et saveurs du Maghreb à Bègles. Tajines, couscous, plat du jour et carte de vins bordelais.",
+  "address":{"@type":"PostalAddress","streetAddress":"246 boulevard Jean-Jacques Bosc","postalCode":"33130","addressLocality":"Bègles","addressCountry":"FR"},
+  "servesCuisine":["Française","Marocaine"],
+  "priceRange":"€€",
+  "aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","reviewCount":"115"},
+  "openingHours":["Mo-We 08:00-19:00","Th 08:00-01:00","Fr 08:00-19:00","Sa 10:00-01:30"]
+}
+</script>
+
+<script>
+(function(){
+  // Menu mobile
+  var b = document.getElementById('burger'), n = document.getElementById('menu-nav');
+  b.addEventListener('click', function(){
+    var ouvert = n.classList.toggle('ouvert');
+    b.setAttribute('aria-expanded', ouvert ? 'true' : 'false');
+  });
+  n.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      n.classList.remove('ouvert');
+      b.setAttribute('aria-expanded','false');
+    });
+  });
+
+  // Année du copyright
+  document.getElementById('annee').textContent = new Date().getFullYear();
+
+  // Apparitions au défilement
+  var cibles = document.querySelectorAll('.rv');
+  if(!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches){
+    cibles.forEach(function(e){ e.classList.add('vu'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entrees){
+    entrees.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('vu'); io.unobserve(e.target); }
+    });
+  }, {threshold:.1, rootMargin:'0px 0px -6% 0px'});
+  cibles.forEach(function(e,i){
+    e.style.transitionDelay = Math.min((i % 4) * 70, 210) + 'ms';
+    io.observe(e);
+  });
+})();
+</script>
+
+</body>
+</html>
