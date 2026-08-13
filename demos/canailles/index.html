@@ -10,6 +10,8 @@
 <meta property="og:description" content="Bistrot français et saveurs du Maghreb à Bègles. Menu du jour 15 €, tajines, couscous et belle carte de vins.">
 <meta property="og:type" content="restaurant">
 <meta property="og:locale" content="fr_FR">
+<meta property="og:image" content="https://demos.lemarchanddesites.fr/demos/canailles/img/facade.jpg">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -142,6 +144,7 @@ section{padding:clamp(3.2rem,8vw,5.5rem) 0;scroll-margin-top:78px;}
 .maison .encart{background:var(--beige);border-radius:20px;padding:1.8rem 1.9rem;}
 .maison .encart .plume{color:var(--rouge);}
 .duo{display:flex;flex-direction:column;gap:1.1rem;}
+@media(min-width:760px){ .duo{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;} }
 .duo .ligne{display:flex;gap:14px;align-items:flex-start;}
 .duo .puce{flex:none;width:34px;height:34px;border-radius:50%;background:var(--rouge);
   color:var(--creme);display:flex;align-items:center;justify-content:center;
@@ -204,12 +207,21 @@ section{padding:clamp(3.2rem,8vw,5.5rem) 0;scroll-margin-top:78px;}
 .chateaux{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center;}
 .chateaux span{background:rgba(255,255,255,.11);border-radius:999px;padding:.42rem 1rem;font-size:.92rem;}
 
+/* ── photos ───────────────────────────────────────── */
+.photo-large{border-radius:24px;overflow:hidden;border:3px solid var(--trait);
+  background:var(--beige);}
+.photo-large img{width:100%;height:auto;display:block;}
+.portrait{border-radius:24px;overflow:hidden;border:3px solid var(--trait);background:var(--beige);}
+.portrait img{width:100%;height:auto;display:block;}
+
 /* ── le lieu ──────────────────────────────────────── */
 .lieux{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:20px;}
 .lieu{background:var(--blanc);border:2px solid var(--trait);border-radius:20px;
-  padding:1.9rem 1.8rem;text-align:center;transition:transform .18s ease, border-color .18s ease;}
+  overflow:hidden;text-align:center;transition:transform .18s ease, border-color .18s ease;}
 .lieu:hover{transform:translateY(-4px);border-color:var(--rouge);}
-.lieu .ill{width:74px;height:74px;margin:0 auto 1rem;}
+.lieu .cliche{display:block;background:var(--beige);}
+.lieu .cliche img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;}
+.lieu .dedans{padding:1.5rem 1.6rem 1.9rem;}
 .lieu h3{font-size:1.45rem;color:var(--rouge);margin-bottom:.5rem;}
 .lieu p{color:var(--encre-douce);font-size:.97rem;margin:0 auto;}
 
@@ -399,6 +411,14 @@ footer .bas a:hover{color:var(--beige);}
     </div>
   </div>
 
+  <!-- ═══ La devanture ═══ -->
+  <div class="wrap" style="padding-bottom:clamp(2.5rem,6vw,4rem);">
+    <div class="photo-large rv">
+      <img src="img/facade.jpg" alt="La devanture des Canailles et son store rouge, boulevard Jean-Jacques Bosc à Bègles"
+           width="1258" height="707" fetchpriority="high">
+    </div>
+  </div>
+
   <!-- ═══ Bandeau pratique ═══ -->
   <div class="bandeau">
     <div class="wrap">
@@ -436,7 +456,14 @@ footer .bas a:hover{color:var(--beige);}
           <p style="margin-top:1.2rem;">Aux Canailles, la cuisine se fait à quatre mains : celles de <b>Khadija</b> et de son fils <b>Sabri</b>. D'un côté les classiques du bistrot français, de l'autre les tajines et les couscous qu'on prépare comme à la maison. Les deux se retrouvent dans la même assiette, sans chichi.</p>
           <p>On y vient pour un café le matin, pour le plat du jour à midi, pour un verre et une planche le soir. Les grandes tablées sont faites pour être partagées, et les murs racontent le quartier — l'UBB n'est jamais bien loin.</p>
         </div>
-        <div class="encart rv">
+        <div class="portrait rv">
+          <img src="img/duo.jpg" alt="Khadija et Sabri, mère et fils, derrière le bar des Canailles"
+               loading="lazy" width="1100" height="825">
+        </div>
+      </div>
+
+      <div class="maison" style="margin-top:clamp(2rem,5vw,3rem);">
+        <div class="encart rv" style="grid-column:1/-1;">
           <p class="plume" style="margin-bottom:1.4rem;">« On cuisine ce qu'on aime manger, et on sert comme on reçoit chez nous. »</p>
           <div class="duo">
             <div class="ligne">
@@ -616,19 +643,25 @@ footer .bas a:hover{color:var(--beige);}
       </div>
       <div class="lieux">
         <div class="lieu rv">
-          <svg class="ill" aria-hidden="true"><use href="#ill-salle"/></svg>
-          <h3>La salle</h3>
-          <p>Grandes tablées et souvenirs de l'UBB aux murs. C'est là qu'on se serre pour être plus nombreux.</p>
+          <span class="cliche"><img src="img/salle.jpg" alt="Une grande tablée dans la salle des Canailles" loading="lazy" width="900" height="675"></span>
+          <div class="dedans">
+            <h3>La salle</h3>
+            <p>Grandes tablées et souvenirs de l'UBB aux murs. C'est là qu'on se serre pour être plus nombreux.</p>
+          </div>
         </div>
         <div class="lieu rv">
-          <svg class="ill" aria-hidden="true"><use href="#ill-patio"/></svg>
-          <h3>Le patio</h3>
-          <p>Couvert et ouvert toute l'année. Le compromis parfait quand le ciel béglais hésite.</p>
+          <span class="cliche"><img src="img/patio.jpg" alt="Le patio des Canailles et ses chaises jaunes" loading="lazy" width="900" height="675"></span>
+          <div class="dedans">
+            <h3>Le patio</h3>
+            <p>Couvert et ouvert toute l'année. Le compromis parfait quand le ciel béglais hésite.</p>
+          </div>
         </div>
         <div class="lieu rv">
-          <svg class="ill" aria-hidden="true"><use href="#ill-terrasse"/></svg>
-          <h3>La terrasse</h3>
-          <p>Aux beaux jours, avec la vue sur Bègles et Bordeaux. On y reste volontiers après le café.</p>
+          <span class="cliche"><img src="img/terrasse.jpg" alt="La terrasse ombragée des Canailles" loading="lazy" width="900" height="675"></span>
+          <div class="dedans">
+            <h3>La terrasse</h3>
+            <p>Aux beaux jours, sous les parasols et l'olivier. On y reste volontiers après le café.</p>
+          </div>
         </div>
       </div>
     </div>
