@@ -1,3 +1,7 @@
 {
-  "trailingSlash": true
+  "trailingSlash": true,
+  "rewrites": [
+    { "source": "/canailles", "destination": "/demos/canailles/index.html" },
+    { "source": "/canailles/", "destination": "/demos/canailles/index.html" }
+  ]
 }
