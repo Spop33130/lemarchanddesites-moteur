@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template Professionnel</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    
+    
+    <link rel="stylesheet" href="/vendor/fonts/outfit.css">
+    <link rel="stylesheet" href="/vendor/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="" id="theme-metier">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-content">
+                    <a href="#accueil" class="navbar-brand">
+                        <span id="site-name">Mon Entreprise</span>
+                    </a>
+                    <div class="navbar-menu" id="navbar-menu">
+                        <a href="#accueil" class="nav-link">Accueil</a>
+                        <a href="#a-propos" class="nav-link">À propos</a>
+                        <a href="#services" class="nav-link">Services</a>
+                        <a href="#galerie" class="nav-link">Galerie</a>
+                        <a href="#temoignages" class="nav-link">Avis</a>
+                        <a href="#contact" class="nav-link nav-link--cta">Contact</a>
+                    </div>
+                    <a href="#" id="navbar-phone" class="navbar-phone" style="display:none;">
+                        <i class="fas fa-phone"></i>
+                        <span id="navbar-phone-text"></span>
+                    </a>
+                    <button class="navbar-toggle" id="navbar-toggle" aria-label="Ouvrir le menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section id="accueil" class="hero">
+        <div class="hero-bg"></div>
+        <div class="container">
+            <div class="hero-content">
+                <span class="hero-badge" id="hero-badge">Artisan certifié</span>
+                <div id="hero-open-status"></div>
+                <h1 class="hero-title" id="hero-title">Titre Principal</h1>
+                <p class="hero-subtitle" id="hero-subtitle">Sous-titre descriptif de l'activité</p>
+                <div class="hero-actions">
+                    <a href="#contact" class="btn btn--hero-primary" id="hero-cta-primary">Nous Contacter</a>
+                    <a href="#services" class="btn btn--hero-outline" id="hero-cta-secondary">Nos Services</a>
+                </div>
+                <div class="hero-tags" id="hero-tags"></div>
+            </div>
+        </div>
+        <div class="hero-wave">
+            <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="var(--color-bg)"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- À propos -->
+    <section id="a-propos" class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <span class="section-label">À propos</span>
+                    <h2 id="about-title">Notre Histoire</h2>
+                    <p id="about-description">Description de l'entreprise...</p>
+                    <div class="about-stats" id="about-stats"></div>
+                </div>
+                <div class="about-visual">
+                    <div class="about-image-wrapper" id="about-image-wrapper">
+                        <div class="about-image-placeholder">
+                            <i class="fas fa-store" id="about-icon"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="services-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Services</span>
+                <h2>Ce que nous proposons</h2>
+                <p>Découvrez notre gamme complète de services professionnels</p>
+            </div>
+            <div class="services-grid" id="services-grid"></div>
+        </div>
+    </section>
+
+    <!-- Engagements -->
+    <section id="engagements" class="engagements-section">
+        <div class="container">
+            <div class="engagements-grid" id="engagements-grid"></div>
+        </div>
+    </section>
+
+    <!-- Galerie -->
+    <section id="galerie" class="gallery-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Galerie</span>
+                <h2>Nos Réalisations</h2>
+                <p>Découvrez notre travail en images</p>
+            </div>
+            <div class="gallery-grid" id="gallery-grid"></div>
+        </div>
+    </section>
+
+    <!-- Témoignages -->
+    <section id="temoignages" class="testimonials-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Avis clients</span>
+                <h2>Ce que disent nos clients</h2>
+                <div id="google-reviews-badge" style="display:none;"></div>
+            </div>
+            <div class="testimonials-wrapper">
+                <div class="testimonials-carousel" id="testimonials-carousel"></div>
+                <div class="testimonial-navigation">
+                    <button class="testimonial-btn" id="testimonial-prev" aria-label="Précédent">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="testimonial-dots" id="testimonial-dots"></div>
+                    <button class="testimonial-btn" id="testimonial-next" aria-label="Suivant">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Questions fréquentes</span>
+                <h2>Tout ce que vous voulez savoir</h2>
+            </div>
+            <div class="faq-list" id="faq-list"></div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Contact</span>
+                <h2 id="contact-title">Une question, un projet ?</h2>
+                <p id="contact-subtitle">Décrivez-nous votre besoin — nous vous répondons dans les plus brefs délais.</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-form-wrapper" id="contact-form-wrapper">
+                    <form id="contact-form" novalidate>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name" class="form-label">Nom complet *</label>
+                                <input type="text" id="name" name="name" class="form-control" placeholder="Jean Dupont" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone" class="form-label">Téléphone</label>
+                                <input type="tel" id="phone" name="phone" class="form-control" placeholder="06 12 34 56 78">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email *</label>
+                            <input type="email" id="email" name="email" class="form-control" placeholder="jean@exemple.fr" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message" class="form-label" id="contact-message-label">Votre message *</label>
+                            <textarea id="message" name="message" class="form-control" rows="5" placeholder="Bonjour, je vous contacte au sujet de..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn--primary btn--full-width" id="contact-submit-btn">
+                            <i class="fas fa-paper-plane"></i>
+                            Envoyer le message
+                        </button>
+                    </form>
+                </div>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="contact-details">
+                            <h4>Adresse</h4>
+                            <p id="contact-address">—</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                        <div class="contact-details">
+                            <h4>Téléphone</h4>
+                            <p id="contact-phone">—</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                        <div class="contact-details">
+                            <h4>Email</h4>
+                            <p id="contact-email">—</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-clock"></i></div>
+                        <div class="contact-details">
+                            <h4>Horaires</h4>
+                            <p id="contact-hours">—</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Google Maps -->
+            <div id="contact-map" class="contact-map" style="display:none;"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3 id="footer-name">Mon Entreprise</h3>
+                    <p id="footer-description">—</p>
+                    <div class="social-links" id="social-links"></div>
+                </div>
+                <div class="footer-nav">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="#accueil">Accueil</a></li>
+                        <li><a href="#a-propos">À propos</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#galerie">Galerie</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact-info">
+                    <h4>Informations</h4>
+                    <p id="footer-address">—</p>
+                    <p id="footer-phone"></p>
+                    <p id="footer-email"></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="footer-year">2024</span> <span id="footer-copy-name">Mon Entreprise</span>. Tous droits réservés. &nbsp;·&nbsp; <a href="mentions/" id="footer-mentions" style="color:inherit;opacity:.6;text-decoration:underline;">Mentions légales</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bouton flottant (desktop) -->
+    <a href="#contact" class="float-btn" id="float-btn" aria-label="Nous contacter">
+        <i class="fas fa-comment-dots"></i>
+        <span>Devis gratuit</span>
+    </a>
+
+    <!-- Barre CTA sticky mobile -->
+    <div class="mobile-cta-bar" id="mobile-cta-bar">
+        <a href="#" id="mobile-cta-phone" class="mobile-cta-btn mobile-cta-btn--phone">
+            <i class="fas fa-phone"></i>
+            <span>Appeler</span>
+        </a>
+        <a href="#" id="mobile-cta-wa" class="mobile-cta-btn mobile-cta-btn--wa">
+            <i class="fab fa-whatsapp"></i>
+            <span>WhatsApp</span>
+        </a>
+    </div>
+
+    <!-- Lightbox -->
+    <div id="lightbox-modal" class="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
+        <button class="lightbox-close" id="lightbox-close" aria-label="Fermer">
+            <i class="fas fa-times"></i>
+        </button>
+        <button class="lightbox-nav lightbox-nav--prev" id="lightbox-prev" aria-label="Précédent">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <div class="lightbox-img-wrapper">
+            <img id="lightbox-img" src="" alt="">
+        </div>
+        <button class="lightbox-nav lightbox-nav--next" id="lightbox-next" aria-label="Suivant">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+    </div>
+
+    <script src="/vendor/emailjs/email.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

@@ -62,9 +62,14 @@ echo "→ Création de $DEST"
 mkdir -p "$DEST/images"
 
 # Squelette autonome (liste blanche : on ne copie QUE le site vitrine)
-for f in index.html app.js style.css favicon.svg robots.txt sitemap.xml vercel.json; do
+for f in app.js style.css favicon.svg robots.txt sitemap.xml; do
   cp "$TEMPLATE_DIR/$f" "$DEST/$f"
 done
+# Ces deux-là changent de nom en route : à la racine du moteur, index.html sert
+# le hub des démos, et vercel.json porte ses redirections à lui. Le site client
+# reçoit le gabarit et une config Vercel nue.
+cp "$TEMPLATE_DIR/template.html"        "$DEST/index.html"
+cp "$TEMPLATE_DIR/vercel.template.json" "$DEST/vercel.json"
 cp -R "$TEMPLATE_DIR/vendor"   "$DEST/vendor"
 cp -R "$TEMPLATE_DIR/mentions" "$DEST/mentions"
 

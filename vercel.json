@@ -1,5 +1,9 @@
 {
   "trailingSlash": true,
+  "redirects": [
+    { "source": "/hub", "destination": "/", "permanent": true },
+    { "source": "/hub/", "destination": "/", "permanent": true }
+  ],
   "rewrites": [
     { "source": "/canailles", "destination": "/demos/canailles/index.html" },
     { "source": "/canailles/", "destination": "/demos/canailles/index.html" }
