@@ -1,4 +1,4 @@
-# GetYourSite — le moteur de sites
+# Le moteur de sites — Le Marchand de Sites
 
 Outil de production interne du **Marchand de Sites**. Il fabrique les sites
 clients à partir d'un seul fichier de contenu, sans écrire de code par client.
@@ -82,7 +82,7 @@ domaines) — inclus dans le prix la première année.
 Dans l'app **Terminal** :
 
 ```bash
-cd ~/Developer/getyoursite
+cd ~/Developer/lemarchanddesites-moteur
 scripts/new-site.sh couverture-lefevre ~/Downloads/config-couverture-lefevre.json ~/Desktop/photos-client couverture-lefevre.fr
 ```
 
@@ -219,7 +219,7 @@ bonnes photos valent mieux que huit mauvaises : la galerie s'adapte.
 3. Si le site a des pages secondaires, les régénérer :
 
 ```bash
-python3 ~/Developer/getyoursite/scripts/build-pages.py ~/Developer/couverture-lefevre
+python3 ~/Developer/lemarchanddesites-moteur/scripts/build-pages.py ~/Developer/couverture-lefevre
 ```
 
 4. Publier :

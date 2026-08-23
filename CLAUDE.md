@@ -1,4 +1,4 @@
-# GetYourSite — moteur de sites
+# Le moteur de sites
 
 Outil de production interne du Marchand de Sites : un `config.json` par client,
 le moteur fabrique le site. Mode d'emploi complet et à jour dans

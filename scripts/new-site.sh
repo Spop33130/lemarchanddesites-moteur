@@ -21,7 +21,7 @@ set -euo pipefail
 
 # --- Emplacements -----------------------------------------------------------
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-TEMPLATE_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"          # racine du repo getyoursite
+TEMPLATE_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"          # racine du repo lemarchanddesites-moteur
 DEV_DIR="${GYS_DEV_DIR:-$HOME/Developer}"
 
 # --- Arguments --------------------------------------------------------------
@@ -124,9 +124,9 @@ fi
   git init -q
   printf '.DS_Store\nnode_modules/\n.vercel/\n' > .gitignore
   git add -A
-  git -c user.name="${GIT_AUTHOR_NAME:-$(git config user.name || echo GetYourSite)}" \
+  git -c user.name="${GIT_AUTHOR_NAME:-$(git config user.name || echo "Le Marchand de Sites")}" \
       -c user.email="${GIT_AUTHOR_EMAIL:-$(git config user.email || echo noreply@example.com)}" \
-      commit -q -m "init: site $SLUG depuis le template GetYourSite"
+      commit -q -m "init: site $SLUG depuis le moteur du Marchand de Sites"
 )
 
 # --- Récap ------------------------------------------------------------------
