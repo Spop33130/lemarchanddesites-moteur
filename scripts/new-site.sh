@@ -15,14 +15,14 @@
 # Exemple :
 #   scripts/new-site.sh boulangerie-martin ~/Downloads/config-boulangerie-martin.json ~/Desktop/photos boulangerie-martin.fr
 #
-# Le site est créé dans  ${GYS_DEV_DIR:-$HOME/Developer}/<slug>
+# Le site est créé dans  ${MOTEUR_DEV_DIR:-$HOME/Developer}/<slug>
 #
 set -euo pipefail
 
 # --- Emplacements -----------------------------------------------------------
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 TEMPLATE_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"          # racine du repo lemarchanddesites-moteur
-DEV_DIR="${GYS_DEV_DIR:-$HOME/Developer}"
+DEV_DIR="${MOTEUR_DEV_DIR:-$HOME/Developer}"
 
 # --- Arguments --------------------------------------------------------------
 SLUG="${1:-}"; CONFIG="${2:-}"; IMAGES="${3:-}"; DOMAIN="${4:-}"
