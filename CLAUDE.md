@@ -29,6 +29,22 @@ affichent une page « Confidentialité ».
 **Une ambiance ne reprend jamais la charte du Marchand de Sites.** Le site d'un
 couvreur doit ressembler à un couvreur, pas à son prestataire.
 
+## Skills
+
+Liste complète et méthode d'audit dans `~/Developer/CLAUDE.md`. Vaut aussi
+bien pour ce moteur que pour les sites qu'il génère (dont meynard-couverture) :
+
+- **Jamais l'import Google Fonts que `hallmark` propose par défaut.** Le repo
+  interdit tout CDN Google pour les polices (fuite d'IP vers un serveur
+  américain, cf. « Les pièges » ci-dessus) — rediriger systématiquement vers
+  `vendor/fonts/`, ne jamais coller l'`@import url('fonts.googleapis.com/...')`
+  généré par défaut.
+- **Toute ambiance produite doit redéfinir le mode sombre, pas seulement
+  `:root`.** Un skill qui génère des tokens CSS sans variante `prefers-color-scheme:
+  dark` ou thème forcé reproduit exactement le bug déjà rencontré et invisible
+  en mode clair — `python3 scripts/verif-demos.py` reste le filet, pas une
+  formalité.
+
 ## La ligne de conduite
 
 Ce dépôt sert à livrer un site une page en trois jours. Toute complexité
