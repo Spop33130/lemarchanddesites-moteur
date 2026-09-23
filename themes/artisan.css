@@ -62,10 +62,9 @@
 .hero-title { font-size: clamp(2.4rem, 6.4vw, 4.5rem); line-height: .97; }
 .section-label { font-family: var(--font-titre); font-weight: 800; letter-spacing: .15em; font-size: .72rem; }
 
-/* Le socle pose déjà un accent (bordure haute épaisse) : ne pas en ajouter un
-   second sur le côté, ça enferme la carte dans un cadre et fait « brutal »
-   plutôt que « franc ». Une ombre mate légère au repos suffit à donner du
-   relief sans le rendre luisant — l'ombre plus marquée reste réservée au survol. */
+/* Le socle réserve son accent dégradé (filet du haut) au survol : au repos,
+   une ombre mate légère suffit à donner du relief sans le rendre luisant —
+   un artisan ne vend pas du verre poli. */
 .service-card {
   box-shadow: 0 2px 10px rgba(22,24,26,.05);
 }
