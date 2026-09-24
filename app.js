@@ -387,7 +387,7 @@ function renderGallery(filenames) {
   }));
 
   el.innerHTML = galleryImages.map((img, i) => `
-    <div class="gallery-item reveal" data-index="${i}">
+    <div class="gallery-item reveal" data-index="${i}" role="button" tabindex="0" aria-label="Agrandir : ${img.alt}">
       <img src="${img.src}" alt="${img.alt}" loading="lazy"
            onerror="this.style.display='none';this.closest('.gallery-item').classList.add('gallery-item--missing')">
       <div class="gallery-item-overlay"><span>${img.alt}</span></div>
@@ -395,10 +395,19 @@ function renderGallery(filenames) {
     </div>
   `).join('');
 
+  // Zone cliquable au clic ET au clavier (Entrée/Espace) — une image de galerie
+  // qui n'ouvre la visionneuse qu'à la souris est inatteignable au clavier seul.
   el.querySelectorAll('.gallery-item[data-index]').forEach(item => {
-    item.addEventListener('click', () => {
+    const trigger = () => {
       if (!item.classList.contains('gallery-item--missing')) {
         openLightbox(+item.dataset.index);
+      }
+    };
+    item.addEventListener('click', trigger);
+    item.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        trigger();
       }
     });
   });
@@ -477,14 +486,20 @@ function renderTestimonials(testimonials, googleReviews) {
     `;
   }).join('');
 
-  // Dots
+  // Dots — accessibles au clavier au même titre qu'à la souris (cf. galerie)
   dots.innerHTML = testimonials.map((_, i) =>
-    `<span class="dot ${i === 0 ? 'active' : ''}" data-i="${i}"></span>`
+    `<span class="dot ${i === 0 ? 'active' : ''}" data-i="${i}" role="button" tabindex="0" aria-label="Avis ${i + 1} sur ${testimonials.length}"></span>`
   ).join('');
 
-  dots.querySelectorAll('.dot').forEach(d =>
-    d.addEventListener('click', () => goToTestimonial(+d.dataset.i))
-  );
+  dots.querySelectorAll('.dot').forEach(d => {
+    d.addEventListener('click', () => goToTestimonial(+d.dataset.i));
+    d.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        goToTestimonial(+d.dataset.i);
+      }
+    });
+  });
 
   if (testimonials.length > 1) {
     testimonialTimer = setInterval(() => stepTestimonial(1), 5000);
@@ -867,6 +882,10 @@ function notify(message, type = 'info') {
   const icon = type === 'success' ? 'fas fa-check-circle' : 'fas fa-exclamation-circle';
   const el   = document.createElement('div');
   el.className = `notification notification--${type}`;
+  // role="alert" interrompt le lecteur d'écran pour une erreur (annonce immédiate) ;
+  // "status" reste poli pour une confirmation — sans ça, un envoi de formulaire raté
+  // ne se voit que par la couleur, invisible à qui n'utilise pas d'écran.
+  el.setAttribute('role', type === 'error' ? 'alert' : 'status');
   el.innerHTML = `
     <i class="${icon}"></i>
     <p>${message}</p>
